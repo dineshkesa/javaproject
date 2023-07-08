@@ -4,15 +4,13 @@ pipeline {
         pollSCM 'H/3 * * * *'
     }
     stages {
-        stage ('vishwa repo') { 
-            agent { label 'JAVA' }
-            steps {
-                git credentialsId: 'github-cred', url: 'https://github.com/Vishwanathms/Java-Proj1'
+        stage ('clone repo1') { 
+                        steps {
+                git branch: 'B1', credentialsId: 'github-cred', url: 'https://github.com/dineshkesa/javaproject'
             }
         }
         stage ('Execute Java') {
-            agent { label 'JAVA' }
-            steps {
+                        steps {
                 sh 'javac Samplecode.java'
                 sh 'java Simple'
             }
